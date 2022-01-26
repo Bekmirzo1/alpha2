@@ -163,6 +163,14 @@ h6 {
 body {
   color: #000;
   font-feature-settings: "salt" on;
+  font-size: 14px;
+  line-height: 140%;
+}
+@media (max-width: 767.98px) {
+  body {
+    font-size: 13px;
+    line-height: 140%;
+  }
 }
 body._lock {
   overflow: hidden;
@@ -622,6 +630,7 @@ textarea.input {
   font-weight: 500;
   letter-spacing: -0.04em;
   font-size: 150px;
+  line-height: 1;
 }
 @media (max-width: 1360px) {
   ._title {
@@ -896,8 +905,16 @@ textarea.input {
   border-radius: 16px;
   padding: 0px 30px;
 }
-.more._anim-items {
-  transform: translate(-30%, 0);
+.more._anim-items::before {
+  transition: all 0.6s ease 0s;
+  transform: translate(-120%, 0);
+  opacity: 1;
+  visibility: hidden;
+}
+.more._anim-items._anim::before {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0px, 0px);
 }
 .more span {
   font-family: StyreneAlc;
@@ -911,12 +928,12 @@ textarea.input {
   font-size: 12px;
 }
 
-._anim-default._anim-items, ._anim-items.more {
+._anim-default._anim-items {
   transition: all 1s ease 0s;
   opacity: 0;
   visibility: hidden;
 }
-._anim-default._anim-items._anim, ._anim-items._anim.more {
+._anim-default._anim-items._anim {
   transform: translate(0px, 0px);
   opacity: 1;
   visibility: visible;
@@ -1164,6 +1181,16 @@ textarea.input {
     z-index: 10;
   }
 }
+.header__search {
+  cursor: pointer;
+  font-size: 20px;
+  color: #ACACAC;
+}
+@media (max-width: 767.98px) {
+  .header__search {
+    display: none;
+  }
+}
 @media (max-width: 767.98px) {
   .menu__body {
     position: fixed;
@@ -1362,9 +1389,7 @@ textarea.input {
 
 @media (min-width: 767.98px) {
   .icon-menu {
-    pointer-events: none;
-    opacity: 0;
-    visibility: hidden;
+    display: none;
   }
 }
 @media (max-width: 767.98px) {
@@ -2007,7 +2032,7 @@ textarea.input {
   }
 }
 
-.items-instr, .instr__column-item {
+.items-instr, .instr__column {
   background: #fafafa;
   border-radius: 16px;
 }
@@ -2428,8 +2453,7 @@ textarea.input {
 }
 @media (min-width: 767.98px) and (any-hover: hover) {
   .aside-instr__item a:hover {
-    background: #000;
-    color: #fff;
+    background: #fafafa;
   }
 }
 @media (max-width: 767.98px) {
